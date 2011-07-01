@@ -4,6 +4,8 @@ DavesApp::Application.routes.draw do
   
   match '/signin',  :to => 'sessions#new' 			# new
   match '/signout', :to => 'sessions#destroy'		# destroy
+  
+  
 
   root :to => 'pages#home'
 
