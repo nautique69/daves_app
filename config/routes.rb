@@ -1,5 +1,4 @@
-DavesApp::Application.routes.draw do
-  
+DavesApp::Application.routes.draw do  
 
   root :to => 'pages#home'
 
