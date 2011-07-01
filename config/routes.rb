@@ -1,5 +1,10 @@
 DavesApp::Application.routes.draw do  
 
+  resources :sessions, :only => [:new, :create, :destroy]
+  
+  match '/signin',  :to => 'sessions#new' 			# new
+  match '/signout', :to => 'sessions#destroy'		# destroy
+
   root :to => 'pages#home'
 
   # The priority is based upon order of creation:
