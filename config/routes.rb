@@ -1,9 +1,17 @@
 DavesApp::Application.routes.draw do  
 
+  resources :sites
+
   resources :sessions, :only => [:new, :create, :destroy]
+  
+  match '/home', :to => 'pages#home'
   
   match '/signin',  :to => 'sessions#new' 			# new
   match '/signout', :to => 'sessions#destroy'		# destroy
+
+  match 'sites', :to => 'sites#index'
+  
+  match '/mainmenu', :to => 'pages#mainmenu'
   
   
 

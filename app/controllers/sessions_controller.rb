@@ -1,6 +1,10 @@
 class SessionsController < ApplicationController
   def new
-    @title = "Sign in"
+	if signed_in?
+		redirect_to mainmenu_path
+	else
+		@title = "Sign in"
+	end
   end
 
   def create
@@ -12,8 +16,9 @@ class SessionsController < ApplicationController
       render 'new'
     else
       sign_in user
-     # redirect_to user
-	  redirect_to root_path
+     #redirect_to user
+	  #redirect_to mainmenu_path
+	 redirect_to sites_path
     end
   end
 

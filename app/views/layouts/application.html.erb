@@ -6,7 +6,10 @@
     <%= render 'layouts/stylesheets' %>
   </head>
   <body>
-	        <% flash.each do |key, value| %>
+	<nav>
+		<%= render 'layouts/header' %>
+	</nav>
+	      <% flash.each do |key, value| %>
           <%= content_tag(:div, value, :class => "flash #{key}") %>
         <% end %> 
     <%= yield %>
