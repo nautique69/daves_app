@@ -24,4 +24,9 @@ class Site < ActiveRecord::Base
 	validates :url, :presence => true,
 					 :length   => { :maximum => 100 },
 					 :format   => { :with => url_regex }
+
+	#def to_param
+  	#	url #replace with anything that makes a URL-encoded string
+	#end
+  
 end

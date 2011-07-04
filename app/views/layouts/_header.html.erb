@@ -1,7 +1,16 @@
-<ul>
-<% if signed_in? %>
-<li>Welcome <%= current_user.name%> <%= link_to "Sign out", signout_path, :method => :delete %></li>
-<% else %>
-<li><%= link_to "Sign in", signin_path %></li>
-<% end %>
-</ul>
+<header>
+	<div id="navSign" class="round">
+		<ul>
+		<% if signed_in? %>
+		<li><strong>Welcome <%= current_user.name%></strong> </li>
+		<li><%= link_to "Your sites", sites_path %> </li>
+		<li><%= link_to "Sign out", signout_path, :method => :delete %> </li>		
+		<% else %>
+		<li><%= link_to "Sign in", signin_path %></li>
+		<% end %>
+		</ul>
+	</div>
+	<div id="title">
+		<p>ooohhh aaahhh CMS</p>
+	</div>
+</header>

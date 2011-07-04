@@ -1,13 +1,12 @@
-.container {
-  width: 710px;
-}
-
 body {
-  background: #cff;
+  background: #AA299D;
+  font-family:Arial,Arial Black, Tahoma,Trebuchet MS,Verdana;
+  color:#000;
 }
 
 header {
   padding-top: 20px;
+  height:50px;
 }
 
 header img {
@@ -29,17 +28,17 @@ section h1 {
 /* Links */
 
 a {
-  color: #09c;
+  color: #000;
   text-decoration: none;
 }
 
 a:hover {
-  color: #069;
+  color: #196614;
   text-decoration: underline;
 }
 
 a:visited {
-  color: #069;
+  color: #000;
 }
 
 /* Navigation */
@@ -107,7 +106,7 @@ a.signup_button {
 footer {
   text-align: center;
   margin-top: 10px;
-  width: 710px;
+  width: 980px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -116,34 +115,37 @@ footer nav {
   float: none;
 }
 
-/* User show page */
+#wrapper{
+  width:980px;
+  margin:0 auto;
 
-table.profile {
-  width: 100%;
-  margin-bottom: 0;
 }
 
-td.main {
-  width: 70%;
-  padding: 1em;
+header #navSign {
+  background:#fff;
+  float:right;
+  height:20px;
 }
 
-td.sidebar {
-  width: 30%;
-  padding: 1em;
-  vertical-align: top;
-  background: #ffc;
+header #navSign ul {
+  list-style:none;
 }
 
-.profile img.gravatar {
-  border: 1px solid #999;
-  margin-bottom: -15px;
+header #navSign ul li {
+  float:left;
+  margin-right:10px;
 }
 
-/* signup form */
- * div.field, div.actions {
-  margin-bottom: 10px;
+header #title p{
+  font-weight:bold;
+  font-size:2.4em;
 }
+
+#signin {
+  margin:0 auto;
+
+}
+
 
 /* error fields */
 
@@ -188,71 +190,6 @@ td.sidebar {
   list-style: square;
 }
 
-/* user index */
-ul.users {
-  margin-top: 1em;
-}
-
-.users li {
-  list-style: none;
-}
-
-/* microposts */
- 
- h1.micropost {
-  margin-bottom: 0.3em;
-}
-
-table.microposts {
-  margin-top: 1em;
-}
-
-table.microposts tr {
-  height: 70px;
-}
-
-table.microposts tr td.gravatar {
-  border-top: 1px solid #ccc;
-  vertical-align: top;
-  width: 50px;
-}
-
-table.microposts tr td.micropost {
-  border-top: 1px solid #ccc;
-  vertical-align: top;
-  padding-top: 10px;
-}
-
-table.microposts tr td.micropost span.timestamp {
-  display: block;
-  font-size: 85%;
-  color: #666;
-}
-
-div.user_info img {
-  padding-right: 0.1em;
-}
-
-div.user_info a {
-  text-decoration: none;
-}
-
-div.user_info span.user_name {
-  position: absolute;
-}
-
-div.user_info span.microposts {
-  font-size: 80%;
-}
-
-form.new_micropost {
-  margin-bottom: 2em;
-}
-
-form.new_micropost textarea {
-  height: 4em;
-  margin-bottom: 0;
-}
 
 
 
