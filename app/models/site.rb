@@ -24,9 +24,13 @@ class Site < ActiveRecord::Base
 	validates :url, :presence => true,
 					 :length   => { :maximum => 100 },
 					 :format   => { :with => url_regex }
+					 
+					 
+	#default_scope :order => 'sites.name ASC'				 
 
-	#def to_param
-  	#	url #replace with anything that makes a URL-encoded string
-	#end
+	def to_param
+  		#url #replace with anything that makes a URL-encoded string
+		"#{id}-#{name.parameterize}"
+	end
   
 end

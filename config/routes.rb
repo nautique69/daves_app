@@ -4,6 +4,8 @@ DavesApp::Application.routes.draw do
 
   resources :sessions, :only => [:new, :create, :destroy]
   
+  #map.indexSites 'sites/:name', :controller => 'sites', :action => 'index'
+  
   match '/home', :to => 'pages#home'
   
   match '/signin',  :to => 'sessions#new' 			# new

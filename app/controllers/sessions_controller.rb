@@ -19,6 +19,7 @@ class SessionsController < ApplicationController
      #redirect_to user
 	  #redirect_to mainmenu_path
 	 redirect_to sites_path
+	 #redirect_back_or user
     end
   end
 
