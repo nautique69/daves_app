@@ -1,2 +1,3 @@
-<h1>Sites</h1>
+<h1><%= @site.name %></h1>
 <%= @site.name %>, <%= @site.url %>
+<p><%= link_to "Site config", edit_siteconfig_path%> </p>

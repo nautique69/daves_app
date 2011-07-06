@@ -1,0 +1,16 @@
+<div id="newconfig">
+  <h1>Siteconfig create</h1>
+  <%= form_for(:siteconfig, :url => siteconfigs_path) do |f| %>
+    <div class="field">
+      <%= f.label :Database %><br />
+      <%= f.text_field :db %>
+    </div>
+    <div class="field">
+      <%= f.label :url %><br />
+     <%= f.select("status",  %w[Development Test Live], {}, { :index => nil })%>
+    </div>
+    <div class="actions">
+      <%= f.submit "Create config" %>
+    </div>
+  <% end %>
+</div>

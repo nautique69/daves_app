@@ -1,10 +1,9 @@
 class SessionsController < ApplicationController
+  before_filter :authenticate, :only => [:index, :edit, :update, :destroy]
+
+
   def new
-	if signed_in?
-		redirect_to sites_path
-	else
 		@title = "Sign in"
-	end
   end
 
   def create

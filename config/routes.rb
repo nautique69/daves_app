@@ -11,11 +11,12 @@ DavesApp::Application.routes.draw do
   match '/signin',  :to => 'sessions#new' 			# new
   match '/signout', :to => 'sessions#destroy'		# destroy
 
-  match 'sites', :to => 'sites#index'
+  match '/sites', :to => 'sites#index'
+  match '/newsite', :to => 'sites#new'
   
   match '/mainmenu', :to => 'pages#mainmenu'
   
-  match '/siteconfigs', :to => 'siteconfigs#new'
+  #match '/siteconfigs', :to => 'siteconfigs#edit'
   
 
   root :to => 'pages#home'
