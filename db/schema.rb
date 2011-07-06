@@ -10,7 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110704144137) do
+ActiveRecord::Schema.define(:version => 20110706154214) do
+
+  create_table "siteconfigs", :force => true do |t|
+    t.string   "db"
+    t.string   "status"
+    t.integer  "site_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sites", :force => true do |t|
     t.string   "name"

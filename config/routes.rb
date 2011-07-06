@@ -4,7 +4,7 @@ DavesApp::Application.routes.draw do
 
   resources :sessions, :only => [:new, :create, :destroy]
   
-  #map.indexSites 'sites/:name', :controller => 'sites', :action => 'index'
+  resources :siteconfigs
   
   match '/home', :to => 'pages#home'
   
@@ -15,6 +15,7 @@ DavesApp::Application.routes.draw do
   
   match '/mainmenu', :to => 'pages#mainmenu'
   
+  match '/siteconfigs', :to => 'siteconfigs#new'
   
 
   root :to => 'pages#home'
