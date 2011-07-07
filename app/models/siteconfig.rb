@@ -3,5 +3,8 @@ class Siteconfig < ActiveRecord::Base
 
 	attr_accessible :db, :status
 
-
+	# def to_param
+  		#url #replace with anything that makes a URL-encoded string
+		# "#{id}-#{name.parameterize}"
+	# end
 end

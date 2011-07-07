@@ -12,7 +12,7 @@ class SitesController < ApplicationController
       flash[:success] = "New site created "
       redirect_to sites_path
     else
-      flash[:error] = "Unable to update record.Please try again."
+      flash[:error] =  @site.errors.each_full {|msg| p msg} #"Unable to update record.Please try again."
       render 'new'
     end
   end

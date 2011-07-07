@@ -6,7 +6,7 @@ class SiteconfigsController < ApplicationController
   end
   
   def show
-
+	#@site = Siteconfig.find_by_id(params[:id])
   end
   
   def index
@@ -14,14 +14,15 @@ class SiteconfigsController < ApplicationController
   end
 
   def create
-   #  @siteconfigs = Siteconfigs.new(params[:siteconfigs])
-   #  if @siteconfigs.save
-	  # flash[:success] = "Config updated"
-   #    redirect_to sites_path
-   #  else
-   #  	flash[:error] = "Unable to update record.<br/>Please try again."
-   #      render 'new'
-   #  end
+    #@siteconfigs = Siteconfig.new(params[:siteconfig])
+	siteconfigs = Siteconfig.find_or_create_by_site_id("qwqw", {:site_id => "3"})
+    if siteconfigs.nil?
+	  flash[:success] = "Config updated"
+      redirect_to sites_path
+    else
+    	flash[:error] = siteconfigs.errors.each_full {|msg| p msg} #"Unable to update record.<br/>Please try again."
+        render 'new'
+    end
   end
 
   def edit
@@ -38,13 +39,13 @@ class SiteconfigsController < ApplicationController
   end  
   
   def update
-    #@siteconfig = Siteconfig.find(params[:id])
-    # if @siteconfig.update_attributes(params[:siteconfig])
-    #   flash[:success] = "Site config updated"
-    #   redirect_to sites_path
-    #  else
-    #   render 'edit'
-    # end
+    @siteconfig = Siteconfig.find(params[:id])
+    if @siteconfig.update_attributes(params[:siteconfig])
+      flash[:success] = "Site config updated"
+      redirect_to sites_path
+     else
+      render 'edit'
+    end
 
     # @user = User.find(params[:id])
     # if @user.update_attributes(params[:user])

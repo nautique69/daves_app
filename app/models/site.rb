@@ -16,21 +16,27 @@ class Site < ActiveRecord::Base
 
 	attr_accessible :name, :url
 	
-	url_regex = /\A\http:\/\/[\w+\-.]+/
+	#url_regex = /^http:\/\/[\w+\-.]+\z/
+	
+	url_regex = /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$/ix
 	
 	validates :name, :presence => true,
-					 :length   => { :maximum => 100 }
+					 :length   => { :maximum => 100 },
+					 :uniqueness => { :case_sensitive => false }
 					 
 	validates :url, :presence => true,
 					 :length   => { :maximum => 100 },
-					 :format   => { :with => url_regex }
+					 :format   => { :with => url_regex },
+					 :uniqueness => { :case_sensitive => false }
 					 
+		# validates :url, :presence => true,
+					 # :length   => { :maximum => 100 }				 
 					 
 	#default_scope :order => 'sites.name ASC'				 
 
-	def to_param
+	# def to_param
   		#url #replace with anything that makes a URL-encoded string
-		"#{id}-#{name.parameterize}"
-	end
+		# "#{id}-#{name.parameterize}"
+	# end
   
 end

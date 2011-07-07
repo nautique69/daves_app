@@ -1,10 +1,12 @@
 DavesApp::Application.routes.draw do  
 
-  resources :sites
+  resources :sites do
+	resources :siteconfigs
+  end
 
   resources :sessions, :only => [:new, :create, :destroy]
   
-  resources :siteconfigs
+  
   
   match '/home', :to => 'pages#home'
   
@@ -16,7 +18,7 @@ DavesApp::Application.routes.draw do
   
   match '/mainmenu', :to => 'pages#mainmenu'
   
-  #match '/siteconfigs', :to => 'siteconfigs#edit'
+  match '/sites/:id', :to => 'sites#show'
   
 
   root :to => 'pages#home'
