@@ -14,32 +14,32 @@ class SiteconfigsController < ApplicationController
   end
 
   def create
-    #@siteconfigs = Siteconfig.new(params[:siteconfig])
-	siteconfigs = Siteconfig.find_or_create_by_site_id("qwqw", {:site_id => "3"})
-    if siteconfigs.nil?
-	  flash[:success] = "Config updated"
+    @siteconfigs = Siteconfig.new(params[:siteconfig])
+	# siteconfigs = Siteconfig.find_or_create_by_site_id("qwqw", {:site_id => "3"})
+    if @siteconfigs.save
+	    flash[:success] = "Config updated"
       redirect_to sites_path
     else
     	flash[:error] = siteconfigs.errors.each_full {|msg| p msg} #"Unable to update record.<br/>Please try again."
-        render 'new'
+      render 'new'
     end
   end
 
   def edit
-    @title = "Edit site config "
-    #Review.find_or_create_by_url(sitename, {:staff_id => staff.id})
+     @title = "Edit site config "
+    # #Review.find_or_create_by_url(sitename, {:staff_id => staff.id})
    
     sitefig = Siteconfig.find_by_site_id(params[:id])
    
     if sitefig.nil? 
        render 'new'
     else
-      @siteconfig = sitefig 
+      @siteconfigs = sitefig 
     end    
   end  
   
   def update
-    @siteconfig = Siteconfig.find(params[:id])
+    @siteconfig = Siteconfig.find_by_site_id(params[:id])
     if @siteconfig.update_attributes(params[:siteconfig])
       flash[:success] = "Site config updated"
       redirect_to sites_path
