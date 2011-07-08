@@ -14,47 +14,72 @@ class SiteconfigsController < ApplicationController
   end
 
   def create
-    @siteconfigs = Siteconfig.new(params[:siteconfig])
-	# siteconfigs = Siteconfig.find_or_create_by_site_id("qwqw", {:site_id => "3"})
-    if @siteconfigs.save
-	    flash[:success] = "Config updated"
-      redirect_to sites_path
-    else
-    	flash[:error] = siteconfigs.errors.each_full {|msg| p msg} #"Unable to update record.<br/>Please try again."
-      render 'new'
-    end
+		find_create
+	# siteconfigs = Siteconfig.find_or_create_by_site_id(:site_id => params[:site_id], :db => params[:siteconfig][:db], :status => params[:siteconfig][:status])
+	# if siteconfigs.save
+	    # flash[:success] = "Config updated"
+        # redirect_to site_path(siteconfigs.site_id)
+    # else
+		# flash[:error] = siteconfigs.errors.each_full {|msg| p msg} #"Unable to update record.<br/>Please try again."
+		# render 'new'
+    # end
+
   end
 
   def edit
-     @title = "Edit site config "
-    # #Review.find_or_create_by_url(sitename, {:staff_id => staff.id})
-   
-    sitefig = Siteconfig.find_by_site_id(params[:id])
-   
+  
+    @title = "Edit site config "
+    sitefig = Siteconfig.find_by_site_id(params[:id])   
     if sitefig.nil? 
-       render 'new'
+      render 'new'
     else
+	  site = Site.find_by_id(params[:id])
+	  if !site.nil?
+		@title = site.name + " - Edit site config "
+	  end
+	  
       @siteconfigs = sitefig 
-    end    
+	  
+    end  
+	
   end  
   
   def update
-    @siteconfig = Siteconfig.find_by_site_id(params[:id])
-    if @siteconfig.update_attributes(params[:siteconfig])
-      flash[:success] = "Site config updated"
-      redirect_to sites_path
-     else
-      render 'edit'
-    end
-
-    # @user = User.find(params[:id])
-    # if @user.update_attributes(params[:user])
-    #   flash[:success] = "Profile updated."
-    #   redirect_to @user
-    # else
-    #   @title = "Edit user"
-    #   render 'edit'
+	find_create
+  
+    # @siteconfig = Siteconfig.find_by_site_id(params[:id])	
+    # if @siteconfig.update_attributes(params[:siteconfig])
+      # flash[:success] = "Site config updated"
+      # redirect_to site_path(@siteconfig.site_id)
+     # else
+      # render 'edit'
     # end
+
   end 
+  
+  private
+  
+	def find_create
+		done = false
+		msg1 = ""
+		siteconfigs = Siteconfig.find_or_create_by_site_id(:site_id => params[:site_id], :db => params[:siteconfig][:db], :status => params[:siteconfig][:status])
+		if siteconfigs.nil? # record found so need to update
+			done = true
+			msg1 = "Config created"
+		else
+			if siteconfigs.update_attributes(params[:siteconfig])
+				done = true
+				msg1 = "Config updated"
+			end		
+		end
+				
+		if done
+			flash[:success] = msg1					
+		else
+			flash[:error] = siteconfigs.errors.each_full {|msg| p msg}
+		end
+		redirect_to site_path(siteconfigs.site_id)
+	
+	end
 
 end

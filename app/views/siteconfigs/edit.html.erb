@@ -1,13 +1,13 @@
 <div id="editconfig">
-  <h1>Siteconfig update</h1>
-  <%= form_for(:siteconfigs, @siteconfigs) do |f| %>
+  <h1><%= @title%></h1>
+  <%= form_for(@siteconfigs, :url => { :action => "update", :controller => "siteconfigs" }) do |f| %>
     <div class="field">
       <%= f.label :Database %><br />
       <%= f.text_field :db %>
     </div>
     <div class="field">
       <%= f.label :url %><br />
-     <%#= f.select("status",  %w[Development Test Live], {}, { :index => nil })%>
+     <%= f.select("status",  %w[Development Test Live])%>
     </div>
     <div class="actions">
       <%= f.submit "Save config" %>

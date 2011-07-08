@@ -7,7 +7,7 @@
     </div>
     <div class="field">
       <%= f.label :Status %><br />
-     <%#= f.select("status",  %w[Development Test Live], {}, { :index => nil })%>
+     <%= f.select(:status,  %w[Development Test Live])%>
     </div>
     <div class="actions">
       <%= f.submit "Create config" %>
