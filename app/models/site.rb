@@ -34,9 +34,9 @@ class Site < ActiveRecord::Base
 					 
 	#default_scope :order => 'sites.name ASC'				 
 
-	# def to_param
+	 def to_param
   		#url #replace with anything that makes a URL-encoded string
-		# "#{id}-#{name.parameterize}"
-	# end
+		 "#{id}-#{name.parameterize}"
+	 end
   
 end

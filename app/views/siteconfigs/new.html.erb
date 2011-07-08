@@ -1,14 +1,7 @@
 <div id="newconfig">
   <h1>Siteconfig create</h1>
   <%= form_for(:siteconfig, :url => { :action => "create", :controller => "siteconfigs" }) do |f| %>
-    <div class="field">
-      <%= f.label :Database %><br />
-      <%= f.text_field :db %>
-    </div>
-    <div class="field">
-      <%= f.label :Status %><br />
-     <%= f.select(:status,  %w[Development Test Live])%>
-    </div>
+    <%= render 'fields',:f => f %>
     <div class="actions">
       <%= f.submit "Create config" %>
     </div>

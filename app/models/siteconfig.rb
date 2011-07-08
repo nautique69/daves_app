@@ -3,8 +3,12 @@ class Siteconfig < ActiveRecord::Base
 
 	attr_accessible :db, :status, :site_id
 
-	# def to_param
+	validates :db, :presence => true,
+				   :length   => { :maximum => 250 }
+
+
+	 def to_param
   		#url #replace with anything that makes a URL-encoded string
-		# "#{id}-#{name.parameterize}"
-	# end
+		 "#{id}-#{name.parameterize}"
+	 end
 end

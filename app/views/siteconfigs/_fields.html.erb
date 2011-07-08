@@ -1,0 +1,8 @@
+    <div class="field">
+      <%= f.label :Database %><br />
+      <%= f.text_field :db %>
+    </div>
+    <div class="field">
+      <%= f.label :url %><br />
+     <%= f.select("status",  %w[Development Test Live])%>
+    </div>

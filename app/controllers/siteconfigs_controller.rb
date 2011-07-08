@@ -1,20 +1,15 @@
 class SiteconfigsController < ApplicationController
  before_filter :authenticate
 
-  def new
-	# @title = "Site config for #{@current_site}" 
-  end
-  
-  def show
-	#@site = Siteconfig.find_by_id(params[:id])
-  end
-  
-  def index
-
-  end
-
   def create
-		find_create
+  	@title = "Create site config "
+  	create_title(" - Create site config ")
+ #  	site = Site.find_by_id(params[:id])
+	# if !site.nil?
+	# 	@title = site.name + " - Edit site config " 
+	# end
+	find_create
+
 	# siteconfigs = Siteconfig.find_or_create_by_site_id(:site_id => params[:site_id], :db => params[:siteconfig][:db], :status => params[:siteconfig][:status])
 	# if siteconfigs.save
 	    # flash[:success] = "Config updated"
@@ -33,13 +28,8 @@ class SiteconfigsController < ApplicationController
     if sitefig.nil? 
       render 'new'
     else
-	  site = Site.find_by_id(params[:id])
-	  if !site.nil?
-		@title = site.name + " - Edit site config "
-	  end
-	  
-      @siteconfigs = sitefig 
-	  
+      create_title(" - Edit site config ")	  
+      @siteconfigs = sitefig 	  
     end  
 	
   end  
@@ -58,6 +48,13 @@ class SiteconfigsController < ApplicationController
   end 
   
   private
+  
+  	def create_title(string)
+	  site = Site.find_by_id(params[:id])
+	  if !site.nil?
+		@title = site.name + string
+	  end
+  	end 
   
 	def find_create
 		done = false
