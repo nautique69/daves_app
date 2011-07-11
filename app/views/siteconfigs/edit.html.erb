@@ -1,5 +1,4 @@
-<div id="editconfig">
-  <h1><%= @title%></h1>
+<div id="editconfig">  
   <%= form_for(@siteconfigs, :url => { :action => "update", :controller => "siteconfigs" }) do |f| %>
      <%= render 'fields',:f => f %>
     <div class="actions">

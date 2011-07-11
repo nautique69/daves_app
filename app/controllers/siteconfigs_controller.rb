@@ -4,10 +4,6 @@ class SiteconfigsController < ApplicationController
   def create
   	@title = "Create site config "
   	create_title(" - Create site config ")
- #  	site = Site.find_by_id(params[:id])
-	# if !site.nil?
-	# 	@title = site.name + " - Edit site config " 
-	# end
 	find_create
 
 	# siteconfigs = Siteconfig.find_or_create_by_site_id(:site_id => params[:site_id], :db => params[:siteconfig][:db], :status => params[:siteconfig][:status])
@@ -59,12 +55,17 @@ class SiteconfigsController < ApplicationController
 	def find_create
 		done = false
 		msg1 = ""
-		siteconfigs = Siteconfig.find_or_create_by_site_id(:site_id => params[:site_id], :db => params[:siteconfig][:db], :status => params[:siteconfig][:status])
+		siteconfigs = Siteconfig.find_or_create_by_site_id(:site_id => params[:site_id],
+														   :db => params[:siteconfig][:db],
+														   :status => params[:siteconfig][:status],
+														   :dbtype => params[:siteconfig][:dbtype],
+														   :username => params[:siteconfig][:username],
+														   :password => params[:siteconfig][:password])
 		if siteconfigs.nil? # record found so need to update
 			done = true
 			msg1 = "Config created"
 		else
-			if siteconfigs.update_attributes(params[:siteconfig])
+			if siteconfigs.update_attributes(params[:siteconfig]) #update record
 				done = true
 				msg1 = "Config updated"
 			end		

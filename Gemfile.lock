@@ -24,6 +24,9 @@ GEM
       activesupport (= 3.0.9)
       arel (~> 2.0.10)
       tzinfo (~> 0.3.23)
+    activerecord-sqlserver-adapter (3.0.15)
+      activerecord (~> 3.0.3)
+      arel (~> 2.0.7)
     activeresource (3.0.9)
       activemodel (= 3.0.9)
       activesupport (= 3.0.9)
@@ -31,6 +34,7 @@ GEM
     annotate-models (1.0.4)
     arel (2.0.10)
     builder (2.1.2)
+    connection_ninja (0.4.1)
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -98,7 +102,9 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  activerecord-sqlserver-adapter
   annotate-models (= 1.0.4)
+  connection_ninja
   factory_girl_rails (= 1.0)
   faker (= 0.3.1)
   rails (= 3.0.9)

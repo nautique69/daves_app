@@ -1,3 +1,4 @@
-<h1><%= @site.name %></h1>
-<%= @site.name %>, <%= @site.url %>
-<p><%= link_to "Site config", edit_site_siteconfig_path(@site)%> </p>
+<p><%= @site.url %></p>
+<div id="editconfig"><%= link_to "Config", edit_site_siteconfig_path(@site)%></div>
+<div id="editnav"><%= link_to "Navigation", edit_site_siteconfig_path(@site)%></div>
+<div id="editarticle"><%= link_to "Articles", edit_site_siteconfig_path(@site)%></div>

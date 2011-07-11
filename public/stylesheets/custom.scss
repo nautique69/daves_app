@@ -1,6 +1,25 @@
+$boxpurple: #D98EF2;
+$boxgreen: #10D34E;
+$boxorange:#ED8C25;
+$boxblue:#2589ED;
+
+@mixin padding {
+  padding:10px;
+}
+
+@mixin round {
+  -moz-border-radius:    10px;
+  -webkit-border-radius: 10px;
+  border-radius:         10px;
+}
+
+.flash {
+  margin-top:10px;
+}
+
 body {
   background: #AA299D;
-  font-family:Arial,Arial Black, Tahoma,Trebuchet MS,Verdana;
+  font-family: Tahoma,Trebuchet MS,Verdana,Arial,Arial Black;
   color:#000;
 }
 
@@ -119,6 +138,43 @@ footer nav {
   width:980px;
   margin:0 auto;
 
+  .sites {
+    background:$boxgreen;
+    @include round;
+    display: inline-block;
+    @include padding;
+    list-style: disc inside;    
+  }
+
+  #editnav {
+    background:$boxorange;
+    display:inline-block;
+    @include padding;
+    @include round;   
+  }
+
+  #editarticle {
+     background:$boxblue;
+    display:inline-block;
+    @include padding;
+    @include round;   
+  }
+
+  #editconfig{
+    background:$boxpurple;
+    display:inline-block;
+    @include padding;
+    @include round;
+    .actions {
+      text-align:center;
+    }
+    .field {
+      label {
+        width:80px;
+        display:inline-block;
+      }
+    }
+  }
 }
 
 header #navSign {

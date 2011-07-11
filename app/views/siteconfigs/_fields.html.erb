@@ -1,8 +1,20 @@
     <div class="field">
-      <%= f.label :Database %><br />
+      <%= f.label :Database %>
       <%= f.text_field :db %>
     </div>
     <div class="field">
-      <%= f.label :url %><br />
+     <%= f.label :Status %>
      <%= f.select("status",  %w[Development Test Live])%>
     </div>
+    <div class="field">
+      <%= f.label :Type %>
+     <%= f.select("dbtype",  %w[sqlite3 MySQL MSSQL])%>
+    </div>    
+    <div class="field">
+      <%= f.label :Username %>
+      <%= f.text_field :username %>
+    </div>    
+    <div class="field">
+      <%= f.label :Password %>
+      <%= f.password_field :password %>
+    </div>    

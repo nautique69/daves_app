@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110707145317) do
+ActiveRecord::Schema.define(:version => 20110709193157) do
 
   create_table "siteconfigs", :force => true do |t|
     t.string   "db"
@@ -18,6 +18,9 @@ ActiveRecord::Schema.define(:version => 20110707145317) do
     t.integer  "site_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "dbtype"
+    t.string   "username"
+    t.string   "password"
   end
 
   create_table "sites", :force => true do |t|
